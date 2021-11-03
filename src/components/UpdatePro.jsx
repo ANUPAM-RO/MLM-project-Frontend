@@ -4,6 +4,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import axios from "axios";
 function UpdatePro() {
     const {
         register,
@@ -11,16 +12,38 @@ function UpdatePro() {
         formState: { errors },
     } = useForm();
     const [userInfo, setUserInfo] = useState();
+    const [regsiterBankname, setRegisterBankname] = useState("");
+    const [regsiterAcountNo, setRegisterAccountNo] = useState("");
+    const [regsiterIfsc, setRegisterIfsc] = useState("");
+    const [regsiterHolder, setRegisterHolder] = useState("");
+    const [regsiterBankbranch, setRegisterBankbranch] = useState("");
+    const update = () => {
+        axios({
+            method: "POST",
+            data: {
+                bankname: regsiterBankname,
+                account: regsiterAcountNo,
+                IFSC: regsiterIfsc,
+                holder: regsiterHolder,
+                bankbranch: regsiterBankbranch,
+            },
+            withCredentials: true,
+            url: "https://stormy-ridge-27884.herokuapp.com/info/bank",
+        }).then((response) => {
+            console.log(response);
+        });
+    };
     const onSubmit = (data) => {
         setUserInfo(data);
-        console.log(data);
-        console.log(errors);
+        update();
+        // console.log(data);
+        // console.log(errors);
     };
 
     return (
         <div className="join-container">
             <pre>{JSON.stringify(userInfo, undefined, 2)}</pre>
-            <h1 className="update-head">Updata Your Bank Information</h1>
+            <h1 className="update-head">Update Your Bank Information</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Bank Name</Form.Label>
@@ -30,6 +53,7 @@ function UpdatePro() {
                         {...register("bank-name", {
                             required: "Bank Name is required",
                         })}
+                        onChange={(e) => setRegisterBankname(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage
@@ -45,6 +69,7 @@ function UpdatePro() {
                         {...register("account", {
                             required: "Account no is required",
                         })}
+                        onChange={(e) => setRegisterAccountNo(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage
@@ -60,6 +85,7 @@ function UpdatePro() {
                         {...register("ifsc", {
                             required: "IFSC code is required",
                         })}
+                        onChange={(e) => setRegisterIfsc(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage
@@ -75,6 +101,7 @@ function UpdatePro() {
                         {...register("holder-name", {
                             required: "Holder-name is required",
                         })}
+                        onChange={(e) => setRegisterHolder(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage
@@ -90,6 +117,7 @@ function UpdatePro() {
                         {...register("branch", {
                             required: "Branch name is required",
                         })}
+                        onChange={(e) => setRegisterBankbranch(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage

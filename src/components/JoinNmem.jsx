@@ -38,6 +38,7 @@ function JoinNmem() {
             console.log(response);
         });
     };
+
     const onSubmit = (data) => {
         setUserInfo(data);
         joinMem();
