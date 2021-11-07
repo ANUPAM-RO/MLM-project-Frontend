@@ -12,24 +12,20 @@ function JoinNmem() {
     } = useForm();
     const [userInfo, setUserInfo] = useState();
     const [regsiterUsername, setRegisterUsername] = useState("");
-    const [regsiterPassword, setRegisterPassword] = useState("");
-    const [regsiterName, setRegisterName] = useState("");
     const [regsiterPhone, setRegisterPhone] = useState("");
     const [regsiterEmail, setRegisterEmail] = useState("");
     const [regsiterAddar, setRegisterAddar] = useState("");
     const [regsiterHeadmem, setRegisterHeadmem] = useState("");
 
     const joinMem = () => {
-        console.log(regsiterName);
         axios({
             method: "POST",
             data: {
                 username: regsiterUsername,
-                password: regsiterPassword,
-                name: regsiterName,
+                password: "arnab123",
                 phone: regsiterPhone,
                 email: regsiterEmail,
-                addar: regsiterAddar,
+                aadhar: regsiterAddar,
                 head: regsiterHeadmem,
             },
             withCredentials: true,
@@ -42,7 +38,7 @@ function JoinNmem() {
     const onSubmit = (data) => {
         setUserInfo(data);
         joinMem();
-        console.log(regsiterName);
+
         // console.log(errors);
     };
 
@@ -67,7 +63,7 @@ function JoinNmem() {
                     name="uname"
                     render={({ message }) => <p className="error">{message}</p>}
                 />
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
@@ -82,13 +78,13 @@ function JoinNmem() {
                     errors={errors}
                     name="pass"
                     render={({ message }) => <p className="error">{message}</p>}
-                />
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Name</Form.Label>
+                /> */}
+                {/* <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>User Name</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Name"
-                        {...register("name", { required: "Name is required" })}
+                        {...register("name", { required: "User Name is required" })}
                         onChange={(e) => setRegisterName(e.target.value)}
                     />
                 </Form.Group>
@@ -96,7 +92,7 @@ function JoinNmem() {
                     errors={errors}
                     name="name"
                     render={({ message }) => <p className="error">{message}</p>}
-                />
+                /> */}
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Phone</Form.Label>
                     <Form.Control

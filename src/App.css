@@ -28,3 +28,11 @@
 .withdrawl-container {
     padding-left: 100px;
 }
+.trans-container {
+    padding-left: 100px;
+}
+.cardRem {
+    width: 18rem;
+    border-radius: 20px;
+    background-color: bisque;
+}

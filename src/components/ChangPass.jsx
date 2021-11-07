@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import axios from "axios";
 function ChangPass() {
     const {
         register,
@@ -10,10 +11,27 @@ function ChangPass() {
         formState: { errors },
     } = useForm();
     const [userInfo, setUserInfo] = useState();
+    const [currentPassword, setCurrentPassword] = useState("");
+    const [newPassword, setnewPassword] = useState("");
+    const [reEnterPassword, setReEnterPassword] = useState("");
+
+    const changePassword = () => {
+        axios({
+            method: "POST",
+            data: {
+                usenname: "Arnab Biswas",
+                old_password: currentPassword,
+                new_password: newPassword,
+            },
+            withCredentials: true,
+            url: "https://stormy-ridge-27884.herokuapp.com/change_password",
+        }).then((response) => {
+            console.log(response);
+        });
+    };
     const onSubmit = (data) => {
         setUserInfo(data);
-        console.log(data);
-        console.log(errors);
+        changePassword();
     };
     return (
         <div className="change-container">
@@ -28,6 +46,7 @@ function ChangPass() {
                         {...register("cpassword", {
                             required: "Current password is required",
                         })}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage
@@ -44,9 +63,10 @@ function ChangPass() {
                             required: "Enter your new password",
                             maxLength: {
                                 value: 12,
-                                message: "password maximum 10 character",
+                                message: "password maximum 12 character",
                             },
                         })}
+                        onChange={(e) => setnewPassword(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage
@@ -62,6 +82,7 @@ function ChangPass() {
                         {...register("compassword", {
                             required: "Re-enter your password",
                         })}
+                        onChange={(e) => setReEnterPassword(e.target.value)}
                     />
                 </Form.Group>
                 <ErrorMessage

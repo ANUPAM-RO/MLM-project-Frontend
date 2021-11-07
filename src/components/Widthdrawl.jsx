@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-
+import Activation from "./Activation";
+import axios from "axios";
 function Widthdrawl() {
     const {
         register,
@@ -15,9 +16,21 @@ function Widthdrawl() {
         console.log(data);
         console.log(errors);
     };
+    const changePassword = () => {
+        axios({
+            method: "POST",
+            data: {
+                usenname: "Arnab Biswas",
+                //amount: 525
+            },
+            withCredentials: true,
+            url: "https://stormy-ridge-27884.herokuapp.com/withdraw_from_name",
+        }).then((response) => {
+            console.log(response);
+        });
+    };
     return (
         <div className="withdrawl-container">
-            <pre>{JSON.stringify(userInfo, undefined, 2)}</pre>
             <h1 className="withd-head">Withdrawal Balance</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -47,6 +60,9 @@ function Widthdrawl() {
                     Withdrawal
                 </Button>
             </Form>
+            <br />
+            <br />
+            <Activation />
         </div>
     );
 }

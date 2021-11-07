@@ -21,14 +21,15 @@ function UpdatePro() {
         axios({
             method: "POST",
             data: {
-                bankname: regsiterBankname,
-                account: regsiterAcountNo,
-                IFSC: regsiterIfsc,
-                holder: regsiterHolder,
-                bankbranch: regsiterBankbranch,
+                username: "Anupam Roy",
+                bank_name: regsiterBankname,
+                account_number: regsiterAcountNo,
+                account_holder_name: regsiterHolder,
+                bank_branch: regsiterBankbranch,
+                ifsc_code: regsiterIfsc,
             },
             withCredentials: true,
-            url: "https://stormy-ridge-27884.herokuapp.com/info/bank",
+            url: "https://stormy-ridge-27884.herokuapp.com/update_bank_info",
         }).then((response) => {
             console.log(response);
         });

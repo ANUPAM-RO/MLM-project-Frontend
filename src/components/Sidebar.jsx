@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div
             style={{
                 display: "flex",
-                height: "auto",
+                height: "cover",
                 overflow: "scroll initial",
             }}
         >
@@ -86,6 +86,16 @@ const Sidebar = () => {
                                 Transfer
                             </CDBSidebarMenuItem>
                         </NavLink>
+                        <NavLink
+                            exact
+                            to="/myteam"
+                            activeClassName="activeClicked"
+                        >
+                            <CDBSidebarMenuItem icon="users">
+                                My Team
+                            </CDBSidebarMenuItem>
+                        </NavLink>
+
                         <NavLink
                             exact
                             to="/report"

@@ -9,17 +9,60 @@ function Dashboard() {
                     exact
                     to="/dashboard/refarel-income"
                     activeClassName="activeClicked"
-                >
-                    <div className="grid-item">Refarel Income</div>
-                </NavLink>
+                ></NavLink>
+            </div>
 
-                <div className="grid-item">Joing Income</div>
-                <div className="grid-item">Level Income</div>
-                <div className="grid-item">Total Income </div>
-                <div className="grid-item">Main Income </div>
-                <div className="grid-item">Active Income</div>
-                <div className="grid-item">Offer Income</div>
-                <div className="grid-item">Global Income</div>
+            <div className="d-flex flex-column">
+                <div className="p-2">
+                    <h5>Name:</h5>
+                    <h5>ID:</h5>
+                    <h5>Joining Date:</h5>
+                </div>
+            </div>
+
+            <div className="d-flex flex-column">
+                <div className="p-2 text-center">
+                    <h4>
+                        <b>Offers Provided By Company</b>
+                    </h4>
+                </div>
+            </div>
+
+            <div className="container">
+                <div className="row">
+                    <div class="col-sm">
+                        <div class="grid-container d-flex flex-wrap justify-content-center">
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Refarel Income
+                            </div>
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Joing Income
+                            </div>
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Level Income
+                            </div>
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Total Income
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="grid-container d-flex flex-wrap justify-content-center">
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Main Income{" "}
+                            </div>
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Active Income
+                            </div>
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Offer Income
+                            </div>
+                            <div className="grid-item my-3 py-5 cardRem">
+                                Global Income
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

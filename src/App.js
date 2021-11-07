@@ -10,12 +10,14 @@ import Widthdrawl from './components/Widthdrawl';
 import UpdatePro from './components/UpdatePro';
 import Transfer from './components/Transfer';
 import ReferalIncome from './components/dashboard/ReferalIncome';
- 
+import MyTeam from './components/MyTeam';
+import Login from './components/loginpage/Login';
+import Register from './components/registerpage/Register';
 function App() {
   return (
     <Router>
       <div className="App">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Switch> 
           <Route path="/dashboard" exact> <Dashboard /></Route>
           <Route path="/dashboard/refarel-income"> <ReferalIncome /></Route>
@@ -25,7 +27,11 @@ function App() {
           <Route path="/widthdrawl"> <Widthdrawl /></Route>
           <Route path="/transfer"> <Transfer /></Route>
           <Route path="/report"> <Report /></Route>
+          <Route path="/myteam"> <MyTeam /></Route>
           <Route path="/log-out"> <Logout /></Route>
+          <Route path="/login"> <Login /></Route>
+          <Route path="/register"> <Register /></Route>
+          
 
         </Switch>
        
