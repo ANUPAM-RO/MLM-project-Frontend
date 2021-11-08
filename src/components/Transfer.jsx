@@ -1,5 +1,6 @@
+import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 function Transfer() {
@@ -9,9 +10,16 @@ function Transfer() {
         formState: { errors },
     } = useForm();
     const [userInfo, setUserInfo] = useState();
+    const [dataset, setData] = useState();
     const onSubmit = (data) => {
         setUserInfo(data);
     };
+    useEffect(() => {
+        axios
+            .get("https://stormy-ridge-27884.herokuapp.com/balance")
+            .then((data) => setData(data))
+            .catch((err) => console.error("API not found", err));
+    });
     return (
         <div className="trans-container">
             <h1 className="trans-head">
@@ -20,7 +28,7 @@ function Transfer() {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Main Wallet Balance:</Form.Label>
-                    <Form.Control type="text" name="wallet" />
+                    <Form.Control type="text" name="wallet" value={dataset} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Amount: </Form.Label>

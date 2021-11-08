@@ -9,6 +9,8 @@ function Activation() {
         formState: { errors },
     } = useForm();
     const [userInfo, setUserInfo] = useState();
+    const [noofid, setNumberOfId] = useState(0);
+    const [perid, setPerid] = useState();
     const onSubmit = (data) => {
         setUserInfo(data);
     };
@@ -22,15 +24,24 @@ function Activation() {
                         type="text"
                         name="id"
                         placeholder="Enter number of id "
+                        onChange={(e) => setNumberOfId(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Per ID: </Form.Label>
-                    <Form.Control type="text" value="650" />
+                    <Form.Control
+                        type="number"
+                        value={perid}
+                        onChange={(e) => setPerid(e.target.value)}
+                    />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Final Amount: </Form.Label>
-                    <Form.Control type="text" name="famount" />
+                    <Form.Control
+                        type="text"
+                        name="famount"
+                        value={noofid * perid}
+                    />
                 </Form.Group>
                 <Button variant="success" type="submit">
                     Submit

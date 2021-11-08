@@ -30,8 +30,8 @@ function Dashboard() {
 
             <div className="container">
                 <div className="row">
-                    <div class="col-sm">
-                        <div class="grid-container d-flex flex-wrap justify-content-center">
+                    <div className="col-sm">
+                        <div className="grid-container d-flex flex-wrap justify-content-center">
                             <div className="grid-item my-3 py-5 cardRem">
                                 Refarel Income
                             </div>
@@ -46,8 +46,8 @@ function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm">
-                        <div class="grid-container d-flex flex-wrap justify-content-center">
+                    <div className="col-sm">
+                        <div className="grid-container d-flex flex-wrap justify-content-center">
                             <div className="grid-item my-3 py-5 cardRem">
                                 Main Income{" "}
                             </div>

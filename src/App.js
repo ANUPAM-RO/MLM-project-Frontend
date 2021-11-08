@@ -17,8 +17,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Sidebar /> */}
+       
         <Switch> 
+          <Route path="/homepage"> <Sidebar /></Route>
           <Route path="/dashboard" exact> <Dashboard /></Route>
           <Route path="/dashboard/refarel-income"> <ReferalIncome /></Route>
           <Route path="/referrals"> <Refferl /></Route>

@@ -16,18 +16,23 @@ function ChangPass() {
     const [reEnterPassword, setReEnterPassword] = useState("");
 
     const changePassword = () => {
-        axios({
-            method: "POST",
-            data: {
-                usenname: "Arnab Biswas",
-                old_password: currentPassword,
-                new_password: newPassword,
-            },
-            withCredentials: true,
-            url: "https://stormy-ridge-27884.herokuapp.com/change_password",
-        }).then((response) => {
-            console.log(response);
-        });
+        if (newPassword === reEnterPassword) {
+            axios({
+                method: "POST",
+                data: {
+                    username: "Arnab Biswas",
+                    old_password: currentPassword,
+                    new_password: newPassword,
+                },
+                withCredentials: true,
+                url: "https://stormy-ridge-27884.herokuapp.com/change_password",
+            }).then((response) => {
+                console.log(response);
+            });
+            alert("Password change Sucessfull");
+        } else {
+            alert("password not match");
+        }
     };
     const onSubmit = (data) => {
         setUserInfo(data);
@@ -35,7 +40,7 @@ function ChangPass() {
     };
     return (
         <div className="change-container">
-            <pre>{JSON.stringify(userInfo, undefined, 2)}</pre>
+            {/* <pre>{JSON.stringify(userInfo, undefined, 2)}</pre> */}
             <h1 className="change-head">Change Password</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">

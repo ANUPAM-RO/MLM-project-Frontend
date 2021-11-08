@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
     FacebookShareButton,
@@ -16,8 +17,15 @@ import "../App.css";
 function Refferl() {
     const [value, setValue] = useState("");
     const [copied, setCopied] = useState(false);
+    const [dataset, setData] = useState("");
     const shareUrl = ""; // TODO: Give Your Personalised URL To Share
-
+    useEffect(() => {
+        axios
+            .get("https://stormy-ridge-27884.herokuapp.com/balance")
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => console.error("API not found", err));
+    });
     return (
         <div className="">
             <div className="grid-container">
