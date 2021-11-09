@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
@@ -18,10 +18,15 @@ import Register from './components/registerpage/Register';
 const userContext = createContext();
 
 function App() {
+  useEffect(() => {
+    console.log(window.location.hostname);
+  }, [])
   const [user, setUser] = useState(null)
   return (
     <userContext.Provider value={{ user: user, setUser: setUser}}>
-    <Router>
+    <Router
+        basename={window.location.hostname == 'localhost' ? '/' : 'build/'}
+      >
       <div>
         <Switch>
           <Route exact path="/" component={Login} />
