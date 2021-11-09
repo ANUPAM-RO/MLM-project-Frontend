@@ -16,8 +16,8 @@ function Transfer() {
     };
     useEffect(() => {
         axios
-            .get("https://stormy-ridge-27884.herokuapp.com/balance")
-            .then((data) => setData(data))
+            .post("https://stormy-ridge-27884.herokuapp.com/balance", {token: localStorage.getItem("token")})
+            .then((data) => console.log(data))
             .catch((err) => console.error("API not found", err));
     });
     return (

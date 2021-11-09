@@ -40,7 +40,7 @@ function Activation() {
                     <Form.Control
                         type="text"
                         name="famount"
-                        value={noofid * perid}
+                        defaultValue={noofid * perid}
                     />
                 </Form.Group>
                 <Button variant="success" type="submit">

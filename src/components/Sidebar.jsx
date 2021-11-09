@@ -46,7 +46,7 @@ const Sidebar = () => {
                         <Link to="transfer" title="Transfer" icons="exchange-alt"/>
                         <Link to="myteam" title="My Team" icons="users"/>
                         <Link to="report" title="Report" icons="chart-bar"/>
-                        <Link to="log-out" title="Log out" icons="power-off"/>
+                        <Link to="logout" title="Log out" icons="power-off"/>
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
             </CDBSidebar>

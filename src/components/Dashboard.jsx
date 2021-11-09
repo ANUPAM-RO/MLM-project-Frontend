@@ -1,7 +1,14 @@
-import React from "react";
+import {useEffect, useContext} from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css";
+import { userContext } from "../App"
+
 function Dashboard() {
+    const user = useContext(userContext)
+    useEffect(() => {
+        console.log(user)
+        console.log(localStorage.getItem("token"))
+    }, []);
     return (
         <div>
             <div className="grid-container">

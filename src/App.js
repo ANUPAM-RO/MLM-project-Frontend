@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
@@ -13,14 +14,19 @@ import ReferalIncome from './components/dashboard/ReferalIncome';
 import MyTeam from './components/MyTeam';
 import Login from './components/loginpage/Login';
 import Register from './components/registerpage/Register';
+
+const userContext = createContext();
+
 function App() {
+  const [user, setUser] = useState(null)
   return (
+    <userContext.Provider value={{ user: user, setUser: setUser}}>
     <Router>
-      <div className="App">
+      <div>
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
-          <div>
+          <div className="App">
         <Sidebar />
             <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/refarel-income" component={ReferalIncome} />
@@ -38,8 +44,12 @@ function App() {
        
         
       </div>
-    </Router>
+      </Router>
+      </userContext.Provider>
   );
 }
  
 export default App;
+export {
+  userContext
+}

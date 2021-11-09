@@ -1,9 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Activation from "./Activation";
 import axios from "axios";
+import { userContext } from "../App"
+
 function Widthdrawl() {
     const {
         register,
@@ -12,6 +13,10 @@ function Widthdrawl() {
     } = useForm();
     const [userInfo, setUserInfo] = useState();
     const [dataset, setData] = useState();
+
+    const user = useContext(userContext)
+
+
     const onSubmit = (data) => {
         setUserInfo(data);
         withdrawl();
@@ -32,7 +37,7 @@ function Widthdrawl() {
     };
     useEffect(() => {
         axios
-            .get("https://stormy-ridge-27884.herokuapp.com/balance")
+            .post("https://stormy-ridge-27884.herokuapp.com/balance", {token: user.token})
             .then((data) => console.log(data))
             .catch((err) => console.error("API not found", err));
         console.log(dataset);
@@ -43,7 +48,7 @@ function Widthdrawl() {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Available Balance</Form.Label>
-                    <Form.Control type="text" value={dataset} />
+                    <Form.Control type="text" defaultValue={dataset} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Withdrawal Amount</Form.Label>
@@ -51,7 +56,7 @@ function Widthdrawl() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Final Amount</Form.Label>
-                    <Form.Control type="text" name="famount" />
+                    <Form.Control type="text" />
                 </Form.Group>
                 <Button variant="success" type="submit">
                     Withdrawal

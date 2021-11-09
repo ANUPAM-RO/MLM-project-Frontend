@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { userContext } from "../App"
+
 import {
     FacebookShareButton,
     WhatsappShareButton,
@@ -15,17 +16,10 @@ import {
 import "../App.css";
 
 function Refferl() {
-    const [value, setValue] = useState("");
+    const user = useContext(userContext)
     const [copied, setCopied] = useState(false);
-    const [dataset, setData] = useState("");
     const shareUrl = ""; // TODO: Give Your Personalised URL To Share
-    useEffect(() => {
-        axios
-            .get("https://stormy-ridge-27884.herokuapp.com/balance")
-            .then((res) => res.json())
-            .then((data) => setData(data))
-            .catch((err) => console.error("API not found", err));
-    });
+
     return (
         <div className="">
             <div className="grid-container">
@@ -40,22 +34,20 @@ function Refferl() {
                 <div className="p-2 text-center">
                     <h3>
                         <b>
-                            Total Referrel Count: <span>0</span>
+                            Total Referrel Count: <span>{ user.user.referralCount }</span>
                         </b>
                     </h3>
                 </div>
                 <h5 className="p-3">
-                    Your Referral Link: &nbsp;
+                    Your Referral Link: 
                     <span>
                         <input
                             type="text"
-                            value={value}
-                            onChange={({ target: { value } }) =>
-                                setValue(value)
-                            }
+                            defaultValue={ user.user.referralCode }
+
                         />
                         <CopyToClipboard
-                            text={value}
+                            text={user.user.referralCode}
                             onCopy={() => setCopied(true)}
                         >
                             <button>Copy</button>
