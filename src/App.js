@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
@@ -18,32 +18,29 @@ import Register from './components/registerpage/Register';
 const userContext = createContext();
 
 function App() {
-  useEffect(() => {
-    console.log(window.location.hostname);
-  }, [])
   const [user, setUser] = useState(null)
   return (
     <userContext.Provider value={{ user: user, setUser: setUser}}>
     <Router
-        basename={window.location.hostname == 'localhost' ? '/' : 'MLM-project-Frontend/build/'}
+        basename={window.location.hostname === 'localhost' ? '/' : 'MLM-project-Frontend/build/'}
       >
       <div>
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
           <div className="App">
-        <Sidebar />
+            <Sidebar />
             <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/dashboard/refarel-income" component={ReferalIncome} />
-          <Route exact path="/referrals" component={Refferl} />
-          <Route exact path="/report" component={Report} />
-          <Route exact path="/logout" component={Logout} />
-          <Route exact path="/join" component={JoinNmem} />
-          <Route exact path="/widthdrawl" component={Widthdrawl} />
-          <Route exact path="/update" component={UpdatePro} />
-          <Route exact path="/transfer" component={Transfer} />
-          <Route exact path="/referalincome" component={ReferalIncome} />
-          <Route exact path="/myteam" component={MyTeam} />
+            <Route exact path="/dashboard/refarel-income" component={ReferalIncome} />
+            <Route exact path="/referrals" component={Refferl} />
+            <Route exact path="/report" component={Report} />
+            <Route exact path="/logout" component={Logout} />
+            <Route exact path="/join" component={JoinNmem} />
+            <Route exact path="/widthdrawl" component={Widthdrawl} />
+            <Route exact path="/update" component={UpdatePro} />
+            <Route exact path="/transfer" component={Transfer} />
+            <Route exact path="/referalincome" component={ReferalIncome} />
+            <Route exact path="/myteam" component={MyTeam} />
           </div>
        </Switch>
       </div>

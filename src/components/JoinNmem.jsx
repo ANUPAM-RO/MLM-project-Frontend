@@ -1,5 +1,4 @@
 import { useState } from "react";
-import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
@@ -7,10 +6,8 @@ import axios from "axios";
 function JoinNmem() {
     const {
         register,
-        handleSubmit,
         formState: { errors },
     } = useForm();
-    const [userInfo, setUserInfo] = useState();
     const [regsiterUsername, setRegisterUsername] = useState("");
     const [regsiterPhone, setRegisterPhone] = useState("");
     const [regsiterEmail, setRegisterEmail] = useState("");
@@ -35,18 +32,11 @@ function JoinNmem() {
         });
     };
 
-    const onSubmit = (data) => {
-        setUserInfo(data);
-        joinMem();
-
-        // console.log(errors);
-    };
-
     return (
-        <div className="join-container">
+        <div className="section">
             {/*  <pre>{JSON.stringify(userInfo, undefined, 2)}</pre> */}
             <h1 className="join-head">Join Members</h1>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form onSubmit={joinMem}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
@@ -55,6 +45,7 @@ function JoinNmem() {
                         {...register("uname", {
                             required: "Username is required",
                         })}
+                        value={regsiterUsername}
                         onChange={(e) => setRegisterUsername(e.target.value)}
                     />
                 </Form.Group>
@@ -109,6 +100,7 @@ function JoinNmem() {
                                 message: "Phone number maximum 10 character",
                             },
                         })}
+                        value={regsiterPhone}
                         onChange={(e) => setRegisterPhone(e.target.value)}
                     />
                 </Form.Group>
@@ -125,6 +117,7 @@ function JoinNmem() {
                         {...register("email", {
                             required: "Email number is required",
                         })}
+                        value={regsiterEmail}
                         onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                 </Form.Group>
@@ -150,6 +143,7 @@ function JoinNmem() {
                                 message: "Addhar numbe maximum 16 character",
                             },
                         })}
+                        value={regsiterAddar}
                         onChange={(e) => setRegisterAddar(e.target.value)}
                     />
                 </Form.Group>
@@ -166,6 +160,7 @@ function JoinNmem() {
                         {...register("head", {
                             required: "Head Member is required",
                         })}
+                        value={regsiterHeadmem}
                         onChange={(e) => setRegisterHeadmem(e.target.value)}
                     />
                 </Form.Group>

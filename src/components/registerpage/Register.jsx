@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import "./register.css";
 import { useForm } from "react-hook-form";
@@ -8,10 +7,8 @@ import { Link } from "react-router-dom";
 function Register() {
     const {
         register,
-        handleSubmit,
         formState: { errors },
     } = useForm();
-    const [userInfo, setUserInfo] = useState();
     const [registerName, setRegisterName] = useState("");
     const [regsiterEmail, setRegisterEmail] = useState("");
     const [regsiterPassword, setRegisterPassword] = useState("");
@@ -35,10 +32,7 @@ function Register() {
             alert("password not match");
         }
     };
-    const onSubmit = (data) => {
-        setUserInfo(data);
-        Regis();
-    };
+
     return (
         <div className="">
             <div className="row featurette sizing d-flex justify-content-center align-items-center">
@@ -128,7 +122,7 @@ function Register() {
                         />
                         <div
                             className="button"
-                            onClick={handleSubmit(onSubmit)}
+                            onClick={() => Regis()}
                         >
                             <Link to="/login">Register</Link>
                         </div>

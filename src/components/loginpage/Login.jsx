@@ -1,15 +1,19 @@
-import { useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import "./login.css"
 import axios from 'axios'
-import { userContext } from '../../App'
 
 
 export default function Login() {
-    const user = useContext(userContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     let history = useHistory();
+
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            history.push("/dashboard")
+        }
+    }, [history])
     
     const CheckLogin = (e) => {
         e.preventDefault()
@@ -18,9 +22,8 @@ export default function Login() {
             password: password
         }).then(res => {
             if (res.data.user) {
-                user.setUser(res.data.user)
                 localStorage.setItem('token', JSON.stringify(res.data.token))
-                console.log(user.user)
+                localStorage.setItem('user', JSON.stringify(res.data.user))
                 history.push("/dashboard");
             }
         })
@@ -29,7 +32,7 @@ export default function Login() {
         <div>
             <div className="wrapper">
 	<div className="container">
-		<h1>Welcome</h1>
+                    <h1 style={{ color: "white", fontWeight: 'bolder' }}>Welcome</h1>
 		
 		<form className="form">
                         <input

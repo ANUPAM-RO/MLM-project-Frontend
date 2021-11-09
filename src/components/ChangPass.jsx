@@ -10,7 +10,6 @@ function ChangPass() {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const [userInfo, setUserInfo] = useState();
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setnewPassword] = useState("");
     const [reEnterPassword, setReEnterPassword] = useState("");
@@ -35,12 +34,10 @@ function ChangPass() {
         }
     };
     const onSubmit = (data) => {
-        setUserInfo(data);
         changePassword();
     };
     return (
         <div className="change-container">
-            {/* <pre>{JSON.stringify(userInfo, undefined, 2)}</pre> */}
             <h1 className="change-head">Change Password</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -51,6 +48,7 @@ function ChangPass() {
                         {...register("cpassword", {
                             required: "Current password is required",
                         })}
+                        value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
                     />
                 </Form.Group>
@@ -71,6 +69,7 @@ function ChangPass() {
                                 message: "password maximum 12 character",
                             },
                         })}
+                        value={newPassword}
                         onChange={(e) => setnewPassword(e.target.value)}
                     />
                 </Form.Group>
@@ -87,6 +86,7 @@ function ChangPass() {
                         {...register("compassword", {
                             required: "Re-enter your password",
                         })}
+                        value={reEnterPassword}
                         onChange={(e) => setReEnterPassword(e.target.value)}
                     />
                 </Form.Group>

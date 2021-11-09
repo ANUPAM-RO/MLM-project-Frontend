@@ -8,10 +8,8 @@ import axios from "axios";
 function UpdatePro() {
     const {
         register,
-        handleSubmit,
         formState: { errors },
     } = useForm();
-    const [userInfo, setUserInfo] = useState();
     const [regsiterBankname, setRegisterBankname] = useState("");
     const [regsiterAcountNo, setRegisterAccountNo] = useState("");
     const [regsiterIfsc, setRegisterIfsc] = useState("");
@@ -34,18 +32,11 @@ function UpdatePro() {
             console.log(response);
         });
     };
-    const onSubmit = (data) => {
-        setUserInfo(data);
-        update();
-        // console.log(data);
-        // console.log(errors);
-    };
 
     return (
-        <div className="join-container">
-            <pre>{JSON.stringify(userInfo, undefined, 2)}</pre>
+        <div className="section">
             <h1 className="update-head">Update Your Bank Information</h1>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form onSubmit={update}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Bank Name</Form.Label>
                     <Form.Control
@@ -54,6 +45,7 @@ function UpdatePro() {
                         {...register("bank-name", {
                             required: "Bank Name is required",
                         })}
+                        value={regsiterBankname}
                         onChange={(e) => setRegisterBankname(e.target.value)}
                     />
                 </Form.Group>
@@ -70,6 +62,7 @@ function UpdatePro() {
                         {...register("account", {
                             required: "Account no is required",
                         })}
+                        value={regsiterAcountNo}
                         onChange={(e) => setRegisterAccountNo(e.target.value)}
                     />
                 </Form.Group>
@@ -86,6 +79,7 @@ function UpdatePro() {
                         {...register("ifsc", {
                             required: "IFSC code is required",
                         })}
+                        value={regsiterIfsc}
                         onChange={(e) => setRegisterIfsc(e.target.value)}
                     />
                 </Form.Group>
@@ -102,6 +96,7 @@ function UpdatePro() {
                         {...register("holder-name", {
                             required: "Holder-name is required",
                         })}
+                        value={regsiterHolder}
                         onChange={(e) => setRegisterHolder(e.target.value)}
                     />
                 </Form.Group>
@@ -118,6 +113,7 @@ function UpdatePro() {
                         {...register("branch", {
                             required: "Branch name is required",
                         })}
+                        value={regsiterBankbranch}
                         onChange={(e) => setRegisterBankbranch(e.target.value)}
                     />
                 </Form.Group>

@@ -32,7 +32,8 @@ const Sidebar = () => {
         >
             <CDBSidebar textColor="#fff" backgroundColor="#333">
 
-                <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>} >
+                <CDBSidebarHeader prefix={<i className="fa fa-bars"></i>} >
+
                     <span className="text-decoration-none" style={{ color: "inherit" }}>Logo</span>
                 </CDBSidebarHeader>
 

@@ -6,8 +6,9 @@ function Logout() {
     useEffect(() => {
         axios.post("https://stormy-ridge-27884.herokuapp.com/logout", { token: localStorage.getItem("token") })
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         history.push("/");
-    }, []);
+    }, [history]);
     return (
         <div>
             <h1>Log Out Successful</h1>
