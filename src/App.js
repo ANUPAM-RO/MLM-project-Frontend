@@ -17,25 +17,23 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard/refarel-income" component={ReferalIncome} />
+          <Route exact path="/refferl" component={Refferl} />
+          <Route exact path="/report" component={Report} />
+          <Route exact path="/logout" component={Logout} />
+          <Route exact path="/join" component={JoinNmem} />
+          <Route exact path="/widthdrawl" component={Widthdrawl} />
+          <Route exact path="/update" component={UpdatePro} />
+          <Route exact path="/transfer" component={Transfer} />
+          <Route exact path="/referalincome" component={ReferalIncome} />
+          <Route exact path="/myteam" component={MyTeam} />
+       </Switch>
        
-        <Switch> 
-          <Route path="/homepage"> <Sidebar /></Route>
-          <Route path="/dashboard" exact> <Dashboard /></Route>
-          <Route path="/dashboard/refarel-income"> <ReferalIncome /></Route>
-          <Route path="/referrals"> <Refferl /></Route>
-          <Route path="/join-new-member"> <JoinNmem /></Route>
-          <Route path="/update-profile"> <UpdatePro /></Route>
-          <Route path="/widthdrawl"> <Widthdrawl /></Route>
-          <Route path="/transfer"> <Transfer /></Route>
-          <Route path="/report"> <Report /></Route>
-          <Route path="/myteam"> <MyTeam /></Route>
-          <Route path="/log-out"> <Logout /></Route>
-          <Route path="/login"> <Login /></Route>
-          <Route path="/register"> <Register /></Route>
-          
-
-        </Switch>
-       
+        
       </div>
     </Router>
   );
