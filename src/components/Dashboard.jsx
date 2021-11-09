@@ -1,14 +1,11 @@
-import {useEffect, useContext} from "react";
+import {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css";
 import { userContext } from "../App"
 
 function Dashboard() {
     const user = useContext(userContext)
-    useEffect(() => {
-        console.log(user)
-        console.log(localStorage.getItem("token"))
-    }, []);
+
     return (
         <div>
             <div className="grid-container">
@@ -21,12 +18,12 @@ function Dashboard() {
 
             <div className="d-flex flex-column">
                 <div className="p-2">
-                    <h5>Name:</h5>
-                    <h5>ID:</h5>
-                    <h5>Joining Date:</h5>
+                    <h5>Name: { user.user.username }</h5>
+                    <h5>ID: { user.user.uid} </h5>
+                    <h5>Joining Date:{ new Date(user.user.created_at).toLocaleDateString()}</h5>
                 </div>
             </div>
-
+            
             <div className="d-flex flex-column">
                 <div className="p-2 text-center">
                     <h4>

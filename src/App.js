@@ -41,8 +41,6 @@ function App() {
           <Route exact path="/myteam" component={MyTeam} />
           </div>
        </Switch>
-       
-        
       </div>
       </Router>
       </userContext.Provider>

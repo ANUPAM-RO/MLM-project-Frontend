@@ -1,25 +1,20 @@
-import axios from "axios";
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { userContext } from "../App"
+
 function Transfer() {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const [userInfo, setUserInfo] = useState();
-    const [dataset, setData] = useState();
     const onSubmit = (data) => {
-        setUserInfo(data);
+        // setUserInfo(data);
     };
-    useEffect(() => {
-        axios
-            .post("https://stormy-ridge-27884.herokuapp.com/balance", {token: localStorage.getItem("token")})
-            .then((data) => console.log(data))
-            .catch((err) => console.error("API not found", err));
-    });
+
+    const user = useContext(userContext);
+
     return (
         <div className="trans-container">
             <h1 className="trans-head">
@@ -28,7 +23,7 @@ function Transfer() {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Main Wallet Balance:</Form.Label>
-                    <Form.Control type="text" name="wallet" value={dataset} />
+                    <Form.Control type="text" name="wallet" value={user.user.wallet.activation_wallet} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Amount: </Form.Label>

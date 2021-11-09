@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Activation from "./Activation";
@@ -11,16 +11,18 @@ function Widthdrawl() {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const [userInfo, setUserInfo] = useState();
-    const [dataset, setData] = useState();
 
     const user = useContext(userContext)
 
 
     const onSubmit = (data) => {
-        setUserInfo(data);
+        // setUserInfo(data);
         withdrawl();
     };
+
+    useEffect(() => {
+        console.log(user);
+    }, []);
     const withdrawl = () => {
         axios({
             method: "POST",
@@ -35,20 +37,14 @@ function Widthdrawl() {
             console.log(response);
         });
     };
-    useEffect(() => {
-        axios
-            .post("https://stormy-ridge-27884.herokuapp.com/balance", {token: user.token})
-            .then((data) => console.log(data))
-            .catch((err) => console.error("API not found", err));
-        console.log(dataset);
-    }, []);
+
     return (
         <div className="withdrawl-container">
             <h1 className="withd-head">Withdrawal Balance</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Available Balance</Form.Label>
-                    <Form.Control type="text" defaultValue={dataset} />
+                    <Form.Control type="text" defaultValue={user.user.wallet.main_wallet} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Withdrawal Amount</Form.Label>
