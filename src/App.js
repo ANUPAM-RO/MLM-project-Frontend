@@ -25,7 +25,7 @@ function App() {
   return (
     <userContext.Provider value={{ user: user, setUser: setUser}}>
     <Router
-        basename={window.location.hostname == 'localhost' ? '/' : 'build/'}
+        basename={window.location.hostname == 'localhost' ? '/' : 'MLM-project-Frontend/build/'}
       >
       <div>
         <Switch>
