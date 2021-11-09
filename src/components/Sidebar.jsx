@@ -8,6 +8,19 @@ import {
 } from "cdbreact";
 import { NavLink } from "react-router-dom";
 
+const Link = ({ to, title, icons }) => {
+    return (
+          <NavLink
+            exact
+            to={"/" + to}
+            activeClassName="activeClicked"
+        >
+            <CDBSidebarMenuItem icon={ icons }>
+                {title}
+            </CDBSidebarMenuItem>
+        </NavLink>
+    )
+}
 const Sidebar = () => {
     return (
         <div
@@ -18,102 +31,22 @@ const Sidebar = () => {
             }}
         >
             <CDBSidebar textColor="#fff" backgroundColor="#333">
-                <CDBSidebarHeader
-                    prefix={<i className="fa fa-bars fa-large"></i>}
-                >
-                    <a
-                        href="/"
-                        className="text-decoration-none"
-                        style={{ color: "inherit" }}
-                    >
-                        Logo
-                    </a>
+
+                <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>} >
+                    <span className="text-decoration-none" style={{ color: "inherit" }}>Logo</span>
                 </CDBSidebarHeader>
 
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
-                        <NavLink
-                            exact
-                            to="/dashboard"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="columns">
-                                Dashboard
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/referrals"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="user-friends">
-                                Referrals
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/join-new-member"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="user-plus">
-                                Join new Member
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/update-profile"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="users-cog">
-                                Update Profile
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/widthdrawl"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="piggy-bank">
-                                Widthdrawl
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/transfer"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="exchange-alt">
-                                Transfer
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/myteam"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="users">
-                                My Team
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-
-                        <NavLink
-                            exact
-                            to="/report"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="chart-bar">
-                                Report
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink
-                            exact
-                            to="/log-out"
-                            activeClassName="activeClicked"
-                        >
-                            <CDBSidebarMenuItem icon="power-off">
-                                Log out
-                            </CDBSidebarMenuItem>
-                        </NavLink>
+                        <Link to="dashboard" title="Dashboard" icons="columns" />
+                        <Link to="referrals" title="Referrals" icons="user-friends"/>
+                        <Link to="join" title="Join new Member" icons="user-plus"/>
+                        <Link to="update" title="Update Profile" icons="users-cog"/>
+                        <Link to="widthdrawl" title="Widthdrawl" icons="piggy-bank"/>
+                        <Link to="transfer" title="Transfer" icons="exchange-alt"/>
+                        <Link to="myteam" title="My Team" icons="users"/>
+                        <Link to="report" title="Report" icons="chart-bar"/>
+                        <Link to="log-out" title="Log out" icons="power-off"/>
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
             </CDBSidebar>

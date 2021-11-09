@@ -20,9 +20,11 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <div>
+        <Sidebar />
+            <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/dashboard/refarel-income" component={ReferalIncome} />
-          <Route exact path="/refferl" component={Refferl} />
+          <Route exact path="/referrals" component={Refferl} />
           <Route exact path="/report" component={Report} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/join" component={JoinNmem} />
@@ -31,6 +33,7 @@ function App() {
           <Route exact path="/transfer" component={Transfer} />
           <Route exact path="/referalincome" component={ReferalIncome} />
           <Route exact path="/myteam" component={MyTeam} />
+          </div>
        </Switch>
        
         
